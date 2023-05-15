@@ -1,6 +1,5 @@
 
 import java.util.ArrayList;
-import java.util.Ramdom;
 import java.util.Random;
 
 public class Controle {
