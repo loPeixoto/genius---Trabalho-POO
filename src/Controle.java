@@ -1,5 +1,8 @@
 
 import java.util.ArrayList;
+import java.util.Ramdom;
+import java.util.Random;
+
 public class Controle {
     private ArrayList <Jogador> jogadores;
     private Jogador atual;
@@ -10,5 +13,11 @@ public class Controle {
         this.jogadores = new ArrayList<>();
         recordista();
         this.atual = bemVindo();
+    }
+
+    public int sortear() {
+        Random r = new Random();
+
+        return r.nextInt(9) + 1;
     }
 }
