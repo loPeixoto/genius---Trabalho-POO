@@ -32,10 +32,25 @@ public class Controle {
         return jogador;
 
     }
-
+    /* Falta verificar se o nome foi deixado em branco */
     public Jogador bemVindo() {
         String n;
         n = JOptionPane.showInputDialog(null, "Qual o seu nome?", "Bem vindo!!!", JOptionPane.PLAIN_MESSAGE);
         return localizarJogador(n);
     }
+
+    public Jogador recordista() {
+        int recorde = 0;
+        Jogador jogadorRecordista = null;
+
+        for (Jogador j : this.jogadores) {
+            if(j.getPontos() > recorde) {
+                jogadorRecordista = j;
+                recorde = j.getPontos();
+            }
+        }
+
+        return jogadorRecordista;
+    }
+
 }

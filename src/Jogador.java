@@ -26,4 +26,8 @@ public class Jogador {
     public String getName() {
         return name;
     }
+
+    public int getPontos() {
+        return pontos;
+    }
 }
