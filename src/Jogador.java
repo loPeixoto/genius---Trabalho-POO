@@ -22,4 +22,8 @@ public class Jogador {
         }
 
     }
+
+    public String getName() {
+        return name;
+    }
 }

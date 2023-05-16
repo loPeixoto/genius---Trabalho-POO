@@ -19,4 +19,16 @@ public class Controle {
 
         return r.nextInt(9) + 1;
     }
+
+    public Jogador localizarJogador(String n) {
+        for(Jogador j : this.jogadores) {
+            if(n.equals(j.getName())) {
+                return j;
+            }
+        }
+        Jogador jogador = new Jogador(n);
+        this.jogadores.add(jogador);
+        return jogador;
+
+    }
 }
