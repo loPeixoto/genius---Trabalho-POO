@@ -24,7 +24,7 @@ public class Jogador {
     }
 
     public String getName() {
-        return name;
+        return nome;
     }
 
     public int getPontos() {
