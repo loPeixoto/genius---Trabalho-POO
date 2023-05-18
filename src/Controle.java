@@ -112,4 +112,19 @@ public class Controle {
         }
 
     }
+    /* Falta coisa na classe jogo */
+    public void jogo() {
+        String tentativa;
+        int sorteado = sortear();
+        boolean acertou = true;
+
+        while(acertou == true) {
+            this.correta = this.correta + sorteado;
+            tentativa = JOptionPane.showInputDialog(null, "O novo número é: " + sorteado, "Digite a sequência completa.", JOptionPane.PLAIN_MESSAGE);
+
+            if(!tentativa.equals(this.correta)) {
+                acertou = false;
+            }
+        }
+    }
 }
