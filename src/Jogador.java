@@ -1,5 +1,7 @@
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.BufferedReader;
+import java.io.FileWriter;
 
 public class Jogador {
     private String nome;
@@ -20,6 +22,12 @@ public class Jogador {
         catch (IOException e) {
             e.printStackTrace();
         }
+
+    }
+
+    public void salvarArq(BufferedWriter b) throws IOException {
+        b.write(this.nome + "\n");
+        b.write(this.pontos + "\n");
 
     }
 

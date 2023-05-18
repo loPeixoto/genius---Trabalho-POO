@@ -5,6 +5,8 @@ import java.util.Random;
 import java.io.IOException;
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.BufferedWriter;
 
 public class Controle {
     private ArrayList <Jogador> jogadores;
@@ -89,6 +91,24 @@ public class Controle {
             this.jogadores = new ArrayList<>();
             System.out.println("Não foi encontrado nenhum jogador no sistema.");
 
+        }
+
+    }
+
+    public void salvaArq() {
+        try{
+            FileWriter f = new FileWriter("jogadores.txt");
+            BufferedWriter b = new BufferedWriter(f);
+
+            b.write(this.jogadores.size() + "\n");
+
+            for(Jogador j : this.jogadores) {
+                j.salvarArq(b);
+            }
+            b.close();
+
+        } catch (IOException e) {
+            System.out.println("Erro ao salvar arquivo de jogadores");
         }
 
     }
