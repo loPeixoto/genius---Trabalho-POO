@@ -53,4 +53,15 @@ public class Controle {
         return jogadorRecordista;
     }
 
+    public boolean errou() {
+        String[] opcoes = {"Sim", "Não"};
+        int resposta = JOptionPane.showOptionDialog(null, "Deseja começar um novo jogo?", "Fim do jogo!", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, opcoes, opcoes[1]);
+
+
+        if(resposta == JOptionPane.YES_OPTION) {
+            return true;
+        } else {return false;}
+
+    }
+
 }
