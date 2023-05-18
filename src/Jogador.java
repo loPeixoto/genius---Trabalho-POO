@@ -1,7 +1,6 @@
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.BufferedReader;
-import java.io.FileWriter;
 
 public class Jogador {
     private String nome;
@@ -23,6 +22,12 @@ public class Jogador {
             e.printStackTrace();
         }
 
+    }
+    /* Fiquei em Dúvida se essa é a ideia dessa função */
+    public void atualizarRecorde(int p) {
+        if(p > this.pontos) {
+            this.pontos = p;
+        }
     }
 
     public void salvarArq(BufferedWriter b) throws IOException {
