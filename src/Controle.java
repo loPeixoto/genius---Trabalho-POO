@@ -64,4 +64,9 @@ public class Controle {
 
     }
 
+    public void bye(String nome, int pontos) {
+        Jogador recordistaGeral = recordista();
+        JOptionPane.showMessageDialog(null, "Recorde da sessão: " + nome + " - " + pontos + "ponto(s) Geral: " + recordistaGeral.getName() + " - " + recordistaGeral.getPontos() + " ponto(s)", "RECORDES", JOptionPane.PLAIN_MESSAGE);
+    }
+
 }
