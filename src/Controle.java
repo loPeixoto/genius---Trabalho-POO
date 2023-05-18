@@ -2,6 +2,9 @@
 import javax.swing.JOptionPane;
 import java.util.ArrayList;
 import java.util.Random;
+import java.io.IOException;
+import java.io.BufferedReader;
+import java.io.FileReader;
 
 public class Controle {
     private ArrayList <Jogador> jogadores;
@@ -69,4 +72,24 @@ public class Controle {
         JOptionPane.showMessageDialog(null, "Recorde da sessão: " + nome + " - " + pontos + "ponto(s) Geral: " + recordistaGeral.getName() + " - " + recordistaGeral.getPontos() + " ponto(s)", "RECORDES", JOptionPane.PLAIN_MESSAGE);
     }
 
+    public void carregarArq() {
+        try{
+            FileReader f = new FileReader("jogadores.txt");
+            BufferedReader b = new BufferedReader(f);
+
+            int t = Integer.parseInt( (b.readLine()) );
+
+            for(int i=0; i<t; i++) {
+                this.jogadores.add(new Jogador(b));
+            }
+            b.close();
+            System.out.println(this.jogadores.size() + " jogadores carregados.");
+
+        }catch(IOException e){
+            this.jogadores = new ArrayList<>();
+            System.out.println("Não foi encontrado nenhum jogador no sistema.");
+
+        }
+
+    }
 }
