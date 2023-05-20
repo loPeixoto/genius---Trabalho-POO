@@ -114,17 +114,28 @@ public class Controle {
     }
     /* Falta coisa na classe jogo */
     public void jogo() {
-        String tentativa;
-        int sorteado = sortear();
-        boolean acertou = true;
+        String tentativa = "";
+        int sorteado;
+        int pontoRodada;
+        carregarArq();
+        this.atual = bemVindo();
 
-        while(acertou == true) {
-            this.correta = this.correta + sorteado;
-            tentativa = JOptionPane.showInputDialog(null, "O novo número é: " + sorteado, "Digite a sequência completa.", JOptionPane.PLAIN_MESSAGE);
+        while(errou() == true){
+            pontoRodada = 0;
+            while(tentativa.equals(this.correta)) {
+                sorteado = sortear();
+                this.correta += sorteado;
+                tentativa = JOptionPane.showInputDialog(null, "O novo número é: " + sorteado, "Digite a sequência completa.", JOptionPane.PLAIN_MESSAGE);
 
-            if(!tentativa.equals(this.correta)) {
-                acertou = false;
+                if(tentativa.equals(this.correta)) {
+                    pontoRodada += 1;
+                }
             }
+            this.atual.pontuacao(pontoRodada);
+            this.atual.atualizarRecorde(this.atual.getPontos());
+            salvaArq();
+
         }
+        bye(this.atual.getName(), this.atual.getPontos());
     }
 }
