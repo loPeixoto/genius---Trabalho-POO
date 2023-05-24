@@ -118,7 +118,7 @@ public class Controle {
         int sorteado;
         int pontoRodada;
         carregarArq();
-        this.atual = bemVindo();
+        //this.atual = bemVindo(); por isso tava chamando duas vzs, chamava no construtor tbm
 
         while(errou() == true){
             pontoRodada = 0;
