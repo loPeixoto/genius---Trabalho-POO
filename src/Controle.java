@@ -7,6 +7,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
 
 public class Controle {
     private ArrayList <Jogador> jogadores;
@@ -87,12 +88,18 @@ public class Controle {
             b.close();
             System.out.println(this.jogadores.size() + " jogadores carregados.");
 
-        }catch(IOException e){
+        }catch ( FileNotFoundException e){
+            this.jogadores = new ArrayList<>();
+            System.out.println("Arquivo de jogadores nao foi encontrado");
+
+        } catch(IOException e){
             this.jogadores = new ArrayList<>();
             System.out.println("Não foi encontrado nenhum jogador no sistema.");
-
-        }
-
+        
+        } catch ( NullPointerException e){
+            this.jogadores = new ArrayList<>();
+            System.out.println("Arquivo vazio ou formato invalido");
+        } 
     }
 
     public void salvaArq() {
@@ -140,10 +147,6 @@ public class Controle {
     }
 
     /* Falta os seguintes metodos */
-
-    public void salvarArq(){
-
-    }
 
 
 }
