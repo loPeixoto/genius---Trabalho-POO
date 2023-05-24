@@ -138,4 +138,12 @@ public class Controle {
         }
         bye(this.atual.getName(), this.atual.getPontos());
     }
+
+    /* Falta os seguintes metodos */
+
+    public void salvarArq(){
+
+    }
+
+
 }
