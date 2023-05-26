@@ -18,7 +18,7 @@ public class Controle {
         this.correta = "";
         this.jogadores = new ArrayList<>();
         recordista();
-        this.atual = bemVindo();
+        //this.atual = bemVindo();
     }
 
     public int sortear() {
@@ -41,7 +41,11 @@ public class Controle {
     /* Falta verificar se o nome foi deixado em branco */
     public Jogador bemVindo() {
         String n;
+        
         n = JOptionPane.showInputDialog(null, "Qual o seu nome?", "Bem vindo!!!", JOptionPane.PLAIN_MESSAGE);
+        while (n == null || n.length()==0 ) {
+            n = JOptionPane.showInputDialog(null, "Qual o seu nome?", "Nome inválido", JOptionPane.PLAIN_MESSAGE);
+        }
         return localizarJogador(n);
     }
 
@@ -61,10 +65,10 @@ public class Controle {
 
     public boolean errou() {
         String[] opcoes = {"Sim", "Não"};
-        int resposta = JOptionPane.showOptionDialog(null, "Deseja começar um novo jogo?", "Fim do jogo!", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, opcoes, opcoes[1]);
+        int resposta = JOptionPane.showOptionDialog(null, " Você acertou " + atual.getPontos() + " pontos, deseja começar um novo jogo?", "Fim do jogo!", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, opcoes, opcoes[1]);
 
 
-        if(resposta == JOptionPane.YES_OPTION) {
+        if(resposta == 0) {
             return true;
         } else {return false;}
 
@@ -126,11 +130,16 @@ public class Controle {
         int sorteado;
         int pontoRodada;
         carregarArq();
-        //this.atual = bemVindo(); por isso tava chamando duas vzs, chamava no construtor tbm
+        int RecordeSessao = 0 ;
+        String JogadorRecordeSessao = "" ;
 
         boolean i = true;
         while(i == true){
+            this.atual = bemVindo();
             pontoRodada = 0;
+            tentativa = "";
+            this.correta = "";
+
             while(tentativa.equals(this.correta)) {
                 sorteado = sortear();
                 this.correta += sorteado;
@@ -140,12 +149,21 @@ public class Controle {
                     pontoRodada += 1;
                 }
             }
+
             this.atual.pontuacao(pontoRodada);
             this.atual.atualizarRecorde(this.atual.getPontos());
-            salvaArq();
+
+            if ( pontoRodada > RecordeSessao){
+                RecordeSessao = pontoRodada;
+                JogadorRecordeSessao = this.atual.getName();
+            }
             i = errou();
         }
-        bye(this.atual.getName(), this.atual.getPontos());
+        
+        salvaArq();
+ 
+
+        bye(JogadorRecordeSessao, RecordeSessao);
     }
 
     /* Falta os seguintes metodos */
