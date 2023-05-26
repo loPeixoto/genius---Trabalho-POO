@@ -160,8 +160,7 @@ public class Controle {
             if( i == true){
                 this.atual = bemVindo();
             }
-        }
-        
+        }     
         salvaArq();
         bye(JogadorRecordeSessao, RecordeSessao);
     }
