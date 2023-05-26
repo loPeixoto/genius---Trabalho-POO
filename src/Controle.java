@@ -69,6 +69,7 @@ public class Controle {
         } else {return false;}
 
     }
+    
 
     public void bye(String nome, int pontos) {
         Jogador recordistaGeral = recordista();
@@ -127,7 +128,8 @@ public class Controle {
         carregarArq();
         //this.atual = bemVindo(); por isso tava chamando duas vzs, chamava no construtor tbm
 
-        while(errou() == true){
+        boolean i = true;
+        while(i == true){
             pontoRodada = 0;
             while(tentativa.equals(this.correta)) {
                 sorteado = sortear();
@@ -141,7 +143,7 @@ public class Controle {
             this.atual.pontuacao(pontoRodada);
             this.atual.atualizarRecorde(this.atual.getPontos());
             salvaArq();
-
+            i = errou();
         }
         bye(this.atual.getName(), this.atual.getPontos());
     }
