@@ -63,9 +63,9 @@ public class Controle {
         return jogadorRecordista;
     }
 
-    public boolean errou() {
+    public boolean errou( int pontoRodada ) {
         String[] opcoes = {"Sim", "Não"};
-        int resposta = JOptionPane.showOptionDialog(null, " Você acertou " + atual.getPontos() + " pontos, deseja começar um novo jogo?", "Fim do jogo!", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, opcoes, opcoes[1]);
+        int resposta = JOptionPane.showOptionDialog(null, " Você acertou " + pontoRodada + " pontos, deseja começar um novo jogo?", "Fim do jogo!", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, opcoes, opcoes[1]);
 
 
         if(resposta == 0) {
@@ -150,14 +150,14 @@ public class Controle {
                 }
             }
 
-            this.atual.pontuacao(pontoRodada);
-            this.atual.atualizarRecorde(this.atual.getPontos());
+            
+            this.atual.atualizarRecorde(pontoRodada);
 
             if ( pontoRodada > RecordeSessao){
                 RecordeSessao = pontoRodada;
                 JogadorRecordeSessao = this.atual.getName();
             }
-            i = errou();
+            i = errou(pontoRodada);
         }
         
         salvaArq();
@@ -165,6 +165,7 @@ public class Controle {
 
         bye(JogadorRecordeSessao, RecordeSessao);
     }
+
 
     /* Falta os seguintes metodos */
 

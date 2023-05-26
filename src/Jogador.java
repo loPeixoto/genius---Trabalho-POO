@@ -36,9 +36,6 @@ public class Jogador {
 
     }
 
-    public void pontuacao(int p) {
-        this.pontos += p;
-    }
 
     public String getName() {
         return nome;
