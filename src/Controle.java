@@ -18,7 +18,7 @@ public class Controle {
         this.correta = "";
         this.jogadores = new ArrayList<>();
         recordista();
-        //this.atual = bemVindo();
+        this.atual = bemVindo();
     }
 
     public int sortear() {
@@ -124,7 +124,7 @@ public class Controle {
         }
 
     }
-    /* Falta coisa na classe jogo */
+    
     public void jogo() {
         String tentativa = "";
         int sorteado;
@@ -135,7 +135,7 @@ public class Controle {
 
         boolean i = true;
         while(i == true){
-            this.atual = bemVindo();
+            
             pontoRodada = 0;
             tentativa = "";
             this.correta = "";
@@ -158,6 +158,9 @@ public class Controle {
                 JogadorRecordeSessao = this.atual.getName();
             }
             i = errou(pontoRodada);
+            if( i == true){
+                this.atual = bemVindo();
+            }
         }
         
         salvaArq();
@@ -165,9 +168,4 @@ public class Controle {
 
         bye(JogadorRecordeSessao, RecordeSessao);
     }
-
-
-    /* Falta os seguintes metodos */
-
-
 }
