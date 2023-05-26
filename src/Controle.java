@@ -38,7 +38,7 @@ public class Controle {
         return jogador;
 
     }
-    /* Falta verificar se o nome foi deixado em branco */
+
     public Jogador bemVindo() {
         String n;
         
@@ -149,7 +149,6 @@ public class Controle {
                     pontoRodada += 1;
                 }
             }
-
             
             this.atual.atualizarRecorde(pontoRodada);
 
@@ -164,8 +163,6 @@ public class Controle {
         }
         
         salvaArq();
- 
-
         bye(JogadorRecordeSessao, RecordeSessao);
     }
 }

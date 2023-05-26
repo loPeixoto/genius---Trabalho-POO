@@ -23,7 +23,7 @@ public class Jogador {
         }
 
     }
-    /* Fiquei em Dúvida se essa é a ideia dessa função */
+
     public void atualizarRecorde(int p) {
         if(p > this.pontos) {
             this.pontos = p;
@@ -35,7 +35,6 @@ public class Jogador {
         b.write(this.pontos + "\n");
 
     }
-
 
     public String getName() {
         return nome;
