@@ -18,7 +18,6 @@ public class Controle {
         this.correta = "";
         this.jogadores = new ArrayList<>();
         recordista();
-        this.atual = bemVindo();
     }
 
     public int sortear() {
@@ -26,7 +25,7 @@ public class Controle {
 
         return r.nextInt(9) + 1;
     }
-
+    
     public Jogador localizarJogador(String n) {
         for(Jogador j : this.jogadores) {
             if(n.equals(j.getName())) {
@@ -135,6 +134,7 @@ public class Controle {
 
         boolean i = true;
         while(i == true){
+            this.atual = bemVindo();
             
             pontoRodada = 0;
             tentativa = "";
@@ -157,9 +157,8 @@ public class Controle {
                 JogadorRecordeSessao = this.atual.getName();
             }
             i = errou(pontoRodada);
-            if( i == true){
-                this.atual = bemVindo();
-            }
+
+            
         }     
         salvaArq();
         bye(JogadorRecordeSessao, RecordeSessao);
